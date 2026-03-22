@@ -1,0 +1,34 @@
+# Project: UR5e Object Sorting by Width
+# Author: Sarthak Bikram Panta
+# Logic: If width >= 25mm, move to Waypoint_5; else Waypoint_6
+
+def sorting_logic():
+  # 1. Move to the starting hub
+  movej(Waypoint_3, a=1.2, v=0.25)
+  
+  # 2. Activate Gripper to pick up object
+  # (Note: rg_grip is a standard command for OnRobot grippers)
+  rg_grip(40, 40) 
+  
+  # 3. Move to inspection point
+  movej(Waypoint_1, a=1.2, v=0.25)
+  
+  # 4. Return to hub for decision making
+  movej(Waypoint_3, a=1.2, v=0.25)
+  
+  # 5. Measure and Branch
+  # get_rg_width() returns the distance between fingers in mm
+  current_width = get_rg_width()
+  
+  if (current_width >= 25):
+    # Branch for Large Objects
+    movej(Waypoint_5, a=1.2, v=0.25)
+    rg_release()
+  else:
+    # Branch for Small Objects
+    movej(Waypoint_6, a=1.2, v=0.25)
+    rg_release()
+    
+  # 6. Cycle complete: Return to Hub
+  movej(Waypoint_3, a=1.2, v=0.25)
+end
