@@ -1,0 +1,30 @@
+Movej
+Waypoint_3
+RG Grip
+Movej
+Waypoint_1
+RG Grip
+Movej
+Waypoint_3
+If get_rg_Width()>/=25
+Movej
+Waypoint_5
+RG Grip
+Else
+Movej
+Waypoint_6
+RG Grip
+RG Grip
+Movej
+Waypoint_2
+RG Grip
+Movej
+Waypoint_3
+If get_rg_Width()>/=25
+Movej
+Waypoint_5
+RG Grip
+Else
+Movej
+Waypoint_6
+RG Grip
